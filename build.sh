@@ -33,9 +33,11 @@ rpm-ostree install \
     gnome-keyring \
     gnome-packagekit-installer \
     gnome-software \
+    goverlay \
     gvfs-smb \
     gvfs-nfs \
     kitty \
+    keepassxc \
     liberation-fonts \
     nautilus \
     network-manager-applet \
