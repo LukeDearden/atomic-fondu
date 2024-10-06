@@ -5,5 +5,5 @@ ghcr.io/jasonn3/build-container-installer:latest \
 IMAGE_REPO=ghcr.io/lukedearden \
 VERSION=41 \
 IMAGE_NAME=atomic-fondu \
-IMAGE_TAG=41 \
+IMAGE_TAG=latest \
 VARIANT=base-main # should match the variant your image is based on

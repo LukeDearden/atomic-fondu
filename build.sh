@@ -58,6 +58,7 @@ rpm-ostree install \
     guestfs-tools \
     python3-tools \
     python3-libguestfs \
+    pip \
     virt-top
 
 # Add COPR repositories
@@ -68,12 +69,19 @@ for i in solopasha/hyprland; do
     "https://copr.fedorainfracloud.org/coprs/${MAINTAINER}/${REPOSITORY}/repo/fedora-${RELEASE}/${MAINTAINER}-${REPOSITORY}-fedora-${RELEASE}.repo"
 done
 
-rpm-ostree install cliphist hypridle hyprlock hyprshot waypaper hyprland hyprpaper hyprshot
+rpm-ostree install cliphist hypridle hyprlock hyprshot waypaper hyprland hyprpaper hyprshot waybar-git
 #### Example for enabling a System Unit File
 
-## install VS Codium
+## Install VS Codium
 rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | tee -a /etc/yum.repos.d/vscodium.repo
 rpm-ostree install codium
+
+# Install Zen Browser
+#wget "https://copr.fedorainfracloud.org/coprs/sneexy/zen-browser/repo/fedora-$(rpm -E %fedora)/sneexy-zen-browsder-fedora-$(rpm -E %fedora).repo" -O "/etc/yum.repos.d/_copr_sneexy-zen-browser.repo"
+#rpm-ostree install zen-browser
+
+# Install PyWal (probably needs to be done later)
+pip3 install pywal --user
 
 systemctl enable podman.socket

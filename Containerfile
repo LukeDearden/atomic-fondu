@@ -1,6 +1,5 @@
 FROM quay.io/fedora/fedora-silverblue:41
 
-
 COPY build.sh /tmp/build.sh
 
 RUN mkdir -p /var/lib/alternatives && \
