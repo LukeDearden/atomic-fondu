@@ -11,11 +11,9 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-rpm-ostree install screen
 # Install RPM packages
 rpm-ostree install \
-    adwaita-blue-gtk-theme \
+    screen \
     adwaita-gtk2-theme \
     adwaita-icon-theme \
     adwaita-qt5 \
@@ -43,8 +41,6 @@ rpm-ostree install \
     network-manager-applet \
     pavucontrol \
     pulseaudio-utils \
-    polkit-gnome \
-    tldr \
     xdg-user-dirs \
     xdg-user-dirs-gtk \
     xdg-desktop-portal-hyprland \
@@ -70,7 +66,12 @@ for i in solopasha/hyprland; do
     "https://copr.fedorainfracloud.org/coprs/${MAINTAINER}/${REPOSITORY}/repo/fedora-${RELEASE}/${MAINTAINER}-${REPOSITORY}-fedora-${RELEASE}.repo"
 done
 
-rpm-ostree install cliphist hypridle hyprlock hyprshot waypaper hyprland-git hyprpaper hyprshot
+rpm-ostree install cliphist hypridle hyprlock hyprshot waypaper hyprland hyprpaper hyprshot
 #### Example for enabling a System Unit File
+
+## install VS Codium
+rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | tee -a /etc/yum.repos.d/vscodium.repo
+rpm-ostree install codium
 
 systemctl enable podman.socket

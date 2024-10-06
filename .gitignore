@@ -1,1 +1,4 @@
 cosign.key
+iso-output/
+iso-output/deploy.iso
+iso-output/deploy.iso-CHECKSUM
